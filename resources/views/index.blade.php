@@ -31,7 +31,7 @@
 						<li class="nav-item"><a href="#" class="nav-link disabled">講師紹介</a></li>
 						<li class="nav-item"><a href="#" class="nav-link disabled">教室紹介</a></li>
 						<li class="nav-item"><a href="#" class="nav-link disabled">合格実績</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">お問い合わせ</a></li>
+						<li class="nav-item">{{ link_to_route('inquiry.index', 'お問い合わせ', [], ['class' => 'nav-link']) }}</li>
 						<li class="nav-item"><a href="#" class="nav-link">保護者様ログイン</a></li>
 					</ul>
 				</div>
@@ -42,7 +42,7 @@
 					<ul>
 						<li>xx.xx.xx hoge</li>
 						<li>xx.xx.xx hoge</li>
-						<li>xx.xx.xx hoge</li>
+						<li>22.08.05 お問い合わせフォーム完成</li>
 						<li>22.08.05 トップページ完成</li>
 						<li>22.08.05 作成開始</li>
 						<li><a href="#">...more</a></li>

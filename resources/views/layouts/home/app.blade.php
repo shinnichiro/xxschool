@@ -31,13 +31,13 @@
 						<li class="nav-item"><a href="#" class="nav-link disabled">講師紹介</a></li>
 						<li class="nav-item"><a href="#" class="nav-link disabled">教室紹介</a></li>
 						<li class="nav-item"><a href="#" class="nav-link disabled">合格実績</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">お問い合わせ</a></li>
+						<li class="nav-item">{{ link_to_route('inquiry.index', 'お問い合わせ', [], ['class' => 'nav-link']) }}</li>
 						<li class="nav-item"><a href="#" class="nav-link">保護者様ログイン</a></li>
 					</ul>
 				</div>
 			</nav>
 
-			@yield('content')
+			@yield('content');
 
 		</div>
 		<footer><p>© 2022 XX塾</p></footer>

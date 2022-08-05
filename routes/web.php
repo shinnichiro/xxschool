@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InquiriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('inquiry', [InquiriesController::class, 'index'])->name('inquiry.index');
+Route::post('inquiry.confirm', [InquiriesController::class, 'create'])->name('inquiry.create');
