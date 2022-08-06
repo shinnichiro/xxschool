@@ -32,7 +32,7 @@
 						<li class="nav-item"><a href="#" class="nav-link disabled">教室紹介</a></li>
 						<li class="nav-item"><a href="#" class="nav-link disabled">合格実績</a></li>
 						<li class="nav-item">{{ link_to_route('inquiry.index', 'お問い合わせ', [], ['class' => 'nav-link']) }}</li>
-						<li class="nav-item"><a href="#" class="nav-link">保護者様ログイン</a></li>
+						<li class="nav-item">{{ link_to_route('login', '保護者様ログイン', [], ['class' => 'nav-link']) }}</li>
 					</ul>
 				</div>
 			</nav>

@@ -12,8 +12,6 @@
 					{{ Form::text('name', null, ['class' => 'form-control mb-2']) }}
 					{{ Form::label('email', 'メールアドレス：') }}
 					{{ Form::text('email', null, ['class' => 'form-control mb-2']) }}
-					{{ Form::label('phone', '電話番号：') }}
-					{{ Form::text('phone', null, ['class' => 'form-control mb-2']) }}
 					{{ Form::label('content', 'お問い合わせ内容：') }}
 					{{ Form::textarea('content', null, ['class' => 'form-control mb-2']) }}
 					<div class="d-grid gap-2">

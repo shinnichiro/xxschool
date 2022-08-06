@@ -16,10 +16,6 @@
 						<td>{{ $inquiry->email }}</td>
 					</tr>
 					<tr>
-						<td>電話番号</td>
-						<td>{{ $inquiry->phone }}</td>
-					</tr>
-					<tr>
 						<td>お問い合わせ内容</td>
 						<td>{{ $inquiry->content }}</td>
 					</tr>

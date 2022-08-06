@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InquiriesController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,8 @@ use App\Http\Controllers\InquiriesController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
+Route::get('/', [InquiriesController::class, 'home'])->name('index');
+Route::get('topics', [InquiriesController::class, 'topics'])->name('topics');
 Route::get('inquiry', [InquiriesController::class, 'index'])->name('inquiry.index');
-Route::post('inquiry.confirm', [InquiriesController::class, 'create'])->name('inquiry.create');
+Route::post('inquiry', [InquiriesController::class, 'create'])->name('inquiry.create');
+Auth::routes();
