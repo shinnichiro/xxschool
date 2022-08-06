@@ -11,7 +11,7 @@
 			@else
 				@foreach ($topics as $key => $topic)
 					<li>{{ substr($topic->created_at, 0, 4) }}{{ substr($topic->created_at, 5, 2) }}{{ substr($topic->created_at, 8, 2) }} {{ $topic->content }}</li>
-					@if ($key == 4)
+					@if ($key == count($topics)-5)
 						@break
 					@endif
 				@endforeach

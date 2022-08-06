@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InquiriesController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::get('topics', [InquiriesController::class, 'topics'])->name('topics');
 Route::get('inquiry', [InquiriesController::class, 'index'])->name('inquiry.index');
 Route::post('inquiry', [InquiriesController::class, 'create'])->name('inquiry.create');
 Auth::routes();
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('user', [UsersController::class, 'index'])->name('user.index');

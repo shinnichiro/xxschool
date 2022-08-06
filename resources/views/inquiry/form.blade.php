@@ -6,7 +6,6 @@
 		<div class="offset-md-3 col-md-6">
 			<h3>お問い合わせフォーム</h3>
 			{{ Form::open(['route' => 'inquiry.create']) }}
-				{{ Form::token() }}
 				<div class="form-group mt-2">
 					{{ Form::label('name', 'お名前：') }}
 					{{ Form::text('name', null, ['class' => 'form-control mb-2']) }}
