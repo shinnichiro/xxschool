@@ -27,6 +27,7 @@
 	    			<ul class="navbar-nav ms-auto">
 	    				@if (Auth::user()->auth == 'Admin')
 	    					<li class="nav-item">{{ link_to_route('user.topics.show', 'トピックス編集', [], ['class' => 'nav-link']) }}</li>
+	    					<li class="nav-item">{{ link_to_route('user.inquiry.show', 'お問い合わせ閲覧', [], ['class' => 'nav-link']) }}</li>
 	    				@endif
 		    			<li class="nav-item">{{ link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link']) }}</li>
 		    		</ul>

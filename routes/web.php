@@ -30,3 +30,6 @@ Route::get('user/topics/{id}/edit', [TopicsController::class, 'edit'])->name('us
 Route::post('user/topics/{id}/store', [TopicsController::class, 'store'])->name('user.topics.store');
 Route::post('user/topics/create', [TopicsController::class, 'create'])->name('user.topics.create');
 Route::delete('user/topics/{id}/destroy', [TopicsController::class, 'destroy'])->name('user.topics.destroy');
+
+Route::get('user/inquiry/show', [InquiriesController::class, 'show'])->name('user.inquiry.show');
+Route::post('user/inquiry/{id}/store', [InquiriesController::class, 'store'])->name('user.inquiry.store');

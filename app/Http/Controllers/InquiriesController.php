@@ -41,4 +41,28 @@ class InquiriesController extends Controller
             'inquiry' => $inquiry,
         ]);
     }
+
+    public function show() {
+        if (\Auth::user()->auth != 'Admin') {
+            return redirect(route('user.index'));
+        }
+
+        $inquiries = Inquiry::all()->sortby('closed');
+
+        return view('user.inquiry.show', [
+            'inquiries' => $inquiries,
+        ]);
+    }
+
+    public function store($id) {
+        if (\Auth::user()->auth != 'Admin') {
+            return redirect(route('user.index'));
+        }
+
+        $inquiry = Inquiry::find($id);
+        $inquiry->closed = true;
+        $inquiry->save();
+
+        return back();
+    }
 }
