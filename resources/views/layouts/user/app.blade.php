@@ -23,8 +23,11 @@
     	<div class="container-fluid">
     		<nav class="navbar navbar-expand-lg mb-4">
     			@if (Auth::check())
-	    			<a href="#" class="navbar-brand"><?php //{{ $user->name() }} ?>さん</a>
+	    			<a href="{{ route('user.index') }}" class="navbar-brand ms-3">{{ Auth::user()->name }}さん</a>
 	    			<ul class="navbar-nav ms-auto">
+	    				@if (Auth::user()->auth == 'Admin')
+	    					<li class="nav-item">{{ link_to_route('user.topics.show', 'トピックス編集', [], ['class' => 'nav-link']) }}</li>
+	    				@endif
 		    			<li class="nav-item">{{ link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link']) }}</li>
 		    		</ul>
     			@else
