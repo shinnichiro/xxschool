@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\ScoresController;
+use App\Http\Controllers\MessagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,9 @@ Route::post('user/score/{id}/create', [ScoresController::class, 'create'])->name
 Route::post('user/score/{id}/edit', [ScoresController::class, 'edit'])->name('user.score.edit');
 Route::post('user/score/{id}/store', [ScoresController::class, 'store'])->name('user.score.store');
 Route::delete('user/score/{id}/destroy', [ScoresController::class, 'destroy'])->name('user.score.destroy');
+
+Route::get('user/message/index', [MessagesController::class, 'index'])->name('user.message.index');
+Route::post('user/message/create', [MessagesController::class, 'create'])->name('user.message.create');
+Route::get('user/message/{id}/show', [MessagesController::class, 'show'])->name('user.message.show');
+Route::post('user/message/{id}/store', [MessagesController::class, 'store'])->name('user.message.store');
+Route::delete('user/message/{id}/destroy', [MessagesController::class, 'destroy'])->name('user.message.destroy');

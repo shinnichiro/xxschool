@@ -35,6 +35,7 @@
 	    				@else
 	    					<li class="nav-item">{{ link_to_route('user.score.show', 'テスト得点閲覧', ['id' => Auth::user()->id], ['class' => 'nav-link']) }}</li>
 	    				@endif
+    					<li class="nav-item">{{ link_to_route('user.message.index', 'メッセージを送る', [], ['class' => 'nav-link']) }}</li>
 		    			<li class="nav-item">{{ link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link']) }}</li>
 		    		</ul>
     			@else
