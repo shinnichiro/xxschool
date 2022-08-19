@@ -33,6 +33,8 @@
 					{{ Form::submit('送信', ['class' => 'btn btn-success']) }}
 					</div>
 				</div>
+				{{ Form::checkbox('notice', 1, false, ['class' => 'form-check-input']) }}
+				{{ Form::label('notice', 'ほかの保護者様にも共有', ['class' => 'form-check-label']) }}
 			{{ Form::close() }}
 		</div>
 	</div>

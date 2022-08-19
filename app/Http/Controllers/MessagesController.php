@@ -11,7 +11,7 @@ class MessagesController extends Controller
         if (\Auth::user()->auth != 'User') {
             $messages = Message::all()->sortByDesc('id');
         } else {
-            $messages = Message::where('user_id', \Auth::user()->id)->orWhere('user_id', 'to_id')->get()->sortByDesc('id');
+            $messages = Message::where('user_id', \Auth::user()->id)->orWhere('to_id', \Auth::user()->id)->orWhere('notice', '1')->get()->sortByDesc('id');
         }
 
         return view('user.message.index', [
@@ -23,7 +23,11 @@ class MessagesController extends Controller
         $message = new Message();
         $message->user_id = \Auth::user()->id;
         $message->content = $request->content;
-        $message->notice = false;                   //仮
+        if ($request->notice == null) {
+            $message->notice = false;
+        } else {
+            $message->notice = $request->notice;
+        }
         $message->closed = false;
         $message->to_id = \Auth::user()->id;
         $message->save();
