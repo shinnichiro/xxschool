@@ -29,10 +29,10 @@ class MessagesController extends Controller
             $message->notice = $request->notice;
         }
         $message->closed = false;
-        $message->to_id = \Auth::user()->id;
+        $message->to_id = \Auth::user()->id;        //仮
         $message->save();
 
-        return back();
+        return redirect(route('user.message.index'));
     }
 
     public function show($id) {

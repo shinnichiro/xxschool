@@ -9,10 +9,10 @@
 					<div class="col-lg-8">
 						<p>{{ $message->user->name }}さんより：{{ $message->content }}</p>
 					</div>
-					@if (\Auth::user()->id == $message->user_id)
 					<div class="col-lg-2 d-grid gap-2">
-						{{ link_to_route('user.message.show', '編集', ['id' => $message->id], ['class' => 'btn btn-primary']) }}
+						{{ link_to_route('user.message.show', '詳細', ['id' => $message->id], ['class' => 'btn btn-primary']) }}
 					</div>
+					@if (\Auth::user()->id == $message->user_id)
 					<div class="col-lg-2">
 						{{ Form::open(['route' => ['user.message.destroy', 'id' => $message->id], 'method' => 'delete']) }}
 							<div class="d-grid gap-2">

@@ -4,16 +4,30 @@
 
 	<div class="row justify-content-center">
 		<div class="col-lg-8">
-			{{ Form::open(['route' => ['user.message.store', 'id' => $message->id]]) }}
-				<div class="row">
-					<div class="col-lg-10">
-						{{ Form::text('content', $message->content, ['class' => 'form-control']) }}
+			@if (\Auth::user()->id == $message->user_id)
+				{{ Form::open(['route' => ['user.message.store', 'id' => $message->id]]) }}
+					<div class="row">
+						<div class="col-lg-10">
+							{{ Form::text('content', $message->content, ['class' => 'form-control']) }}
+						</div>
+						<div class="col-lg-2 d-grid gap-2">
+							{{ Form::submit('編集', ['class' => 'btn btn-success']) }}
+						</div>
 					</div>
-					<div class="col-lg-2 d-grid gap-2">
-						{{ Form::submit('編集', ['class' => 'btn btn-success']) }}
+				{{ Form::close() }}
+			@else
+				{{ Form::open(['route' => ['user.message.create', 'to_id' => $message->user_id, 'notice' => $message->notice]]) }}
+					<div class="row">
+						<p>{{ $message->user->name }}さんより：{{ $message->content }}</p>
+						<div class="col-lg-10">
+							{{ Form::text('content', '', ['class' => 'form-control']) }}
+						</div>
+						<div class="col-lg-2 d-grid gap-2">
+							{{ Form::submit('返信', ['class' => 'btn btn-success']) }}
+						</div>
 					</div>
-				</div>
-			{{ Form::close() }}
+				{{ Form::close() }}
+			@endif
 		</div>
 	</div>
 
