@@ -29,7 +29,11 @@ class MessagesController extends Controller
             $message->notice = $request->notice;
         }
         $message->closed = false;
-        $message->to_id = \Auth::user()->id;        //仮
+        if ($request->to_id == null) {
+            $message->to_id = \Auth::user()->id;
+        } else {
+            $message->to_id = $request->to_id;
+        }
         $message->save();
 
         return redirect(route('user.message.index'));
