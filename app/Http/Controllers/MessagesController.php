@@ -28,7 +28,11 @@ class MessagesController extends Controller
         } else {
             $message->notice = $request->notice;
         }
-        $message->closed = false;
+        if (\Auth::user()->auth == 'User') {
+            $message->closed = false;
+        } else {
+            $message->closed = true;
+        }
         if ($request->to_id == null) {
             $message->to_id = \Auth::user()->id;
         } else {
@@ -50,6 +54,9 @@ class MessagesController extends Controller
     public function store(Request $request) {
         $message = Message::find($request->id);
         $message->content = $request->content;
+        if ($request->closed != null) {
+            $message->closed = $request->closed;
+        }
         $message->save();
 
         return redirect(route('user.message.index'));

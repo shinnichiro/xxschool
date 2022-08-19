@@ -28,6 +28,13 @@
 					</div>
 				{{ Form::close() }}
 			@endif
+			@if (\Auth::user()->auth != 'User' && $message->closed == false)
+				{{ Form::open(['route' => ['user.message.store', 'id' => $message->id, 'closed' => 1, 'content' => $message->content]]) }}
+					<div class="col-lg-2">
+						{{ Form::submit('対応済み', ['class' => 'btn btn-primary']) }}
+					</div>
+				{{ Form::close() }}
+			@endif
 		</div>
 	</div>
 

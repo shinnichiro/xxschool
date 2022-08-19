@@ -7,7 +7,12 @@
 			@foreach($messages as $message)
 				<div class="row align-middle mb-1">
 					<div class="col-lg-8">
-						<p>{{ $message->user->name }}さんより：{{ $message->content }}</p>
+						<p>
+							@if ($message->closed == false && \Auth::user()->auth != 'User')
+								<i class="fa-solid fa-circle-exclamation"></i>
+							@endif
+							{{ $message->user->name }}さんより：{{ $message->content }}
+						</p>
 					</div>
 					<div class="col-lg-2 d-grid gap-2">
 						{{ link_to_route('user.message.show', '詳細', ['id' => $message->id], ['class' => 'btn btn-primary']) }}
