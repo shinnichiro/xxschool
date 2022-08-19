@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('messages', function (Blueprint $table) {
+        Schema::create('message_to_id', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('message_id');
             $table->unsignedBigInteger('to_id');
+            $table->timestamps();
 
-            $table->foreign('to_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('message_id')->references('id')->on('messages')->onDelete('cascade');
+            $table->foreign('to_id')->references('id')->on('messages')->onDelete('cascade');
         });
     }
 
@@ -27,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('messages', function (Blueprint $table) {
-            $table->dropColumn('to_id');
-        });
+        Schema::dropIfExists('message_to_id');
     }
 };

@@ -11,7 +11,14 @@ class MessagesController extends Controller
         if (\Auth::user()->auth != 'User') {
             $messages = Message::all()->sortByDesc('id');
         } else {
-            $messages = Message::where('user_id', \Auth::user()->id)->orWhere('to_id', \Auth::user()->id)->orWhere('notice', '1')->get()->sortByDesc('id');
+            $mesId = [];
+            $myMessages = Message::where('user_id', \Auth::user()->id)->get();
+            foreach ($myMessages as $key => $myMessage) {
+                $mesId[$key] = $myMessage->id;
+            }
+            $messages = Message::where('user_id', \Auth::user()->id)->orWhere('notice', '1')->orWhereHas('messageTo',function($q) use($myMessages, $mesId) {
+                $q->whereIn('message_to_id.to_id', $mesId);
+            })->get()->sortByDesc('id');
         }
 
         return view('user.message.index', [
@@ -33,12 +40,11 @@ class MessagesController extends Controller
         } else {
             $message->closed = true;
         }
-        if ($request->to_id == null) {
-            $message->to_id = \Auth::user()->id;
-        } else {
-            $message->to_id = $request->to_id;
-        }
         $message->save();
+
+        if ($request->to_id != null) {
+            $message->reply($request->to_id);
+        }
 
         return redirect(route('user.message.index'));
     }

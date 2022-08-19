@@ -16,7 +16,7 @@
 					</div>
 				{{ Form::close() }}
 			@else
-				{{ Form::open(['route' => ['user.message.create', 'to_id' => $message->user_id, 'notice' => $message->notice]]) }}
+				{{ Form::open(['route' => ['user.message.create', 'to_id' => $message->id, 'notice' => $message->notice]]) }}
 					<div class="row">
 						<p>{{ $message->user->name }}さんより：{{ $message->content }}</p>
 						<div class="col-lg-10">
