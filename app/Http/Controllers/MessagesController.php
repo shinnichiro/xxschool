@@ -8,6 +8,10 @@ use App\Models\Message;
 class MessagesController extends Controller
 {
     public function index() {
+        if (!\Auth::check()) {
+            return redirect(route('index'));
+        }
+
         if (\Auth::user()->auth != 'User') {
             $messages = Message::all()->sortByDesc('id');
         } else {
@@ -27,6 +31,10 @@ class MessagesController extends Controller
     }
 
     public function create(Request $request) {
+        if (!\Auth::check()) {
+            return redirect(route('index'));
+        }
+
         $message = new Message();
         $message->user_id = \Auth::user()->id;
         $message->content = $request->content;
@@ -50,6 +58,10 @@ class MessagesController extends Controller
     }
 
     public function show($id) {
+        if (!\Auth::check()) {
+            return redirect(route('index'));
+        }
+
         $message = Message::find($id);
 
         return view('user.message.show', [
@@ -58,6 +70,10 @@ class MessagesController extends Controller
     }
 
     public function store(Request $request) {
+        if (!\Auth::check()) {
+            return redirect(route('index'));
+        }
+
         $message = Message::find($request->id);
         $message->content = $request->content;
         if ($request->closed != null) {
@@ -69,8 +85,14 @@ class MessagesController extends Controller
     }
 
     public function destroy($id) {
+        if (!\Auth::check()) {
+            return redirect(route('index'));
+        }
+
         $message = Message::find($id);
-        $message->delete();
+        if ($message->user_id == \Auth::id()) {
+            $message->delete();
+        }
 
         return back();
     }

@@ -39,7 +39,7 @@ Route::post('user/inquiry/{id}/store', [InquiriesController::class, 'store'])->n
 Route::get('user/score/index', [ScoresController::class, 'index'])->name('user.score.index');
 Route::get('user/score/show', [ScoresController::class, 'show'])->name('user.score.show');
 Route::post('user/score/show', [ScoresController::class, 'show'])->name('user.score.show');
-Route::post('user/score/{id}/create', [ScoresController::class, 'create'])->name('user.score.create');
+Route::post('user/score/create', [ScoresController::class, 'create'])->name('user.score.create');
 Route::post('user/score/{id}/edit', [ScoresController::class, 'edit'])->name('user.score.edit');
 Route::post('user/score/{id}/store', [ScoresController::class, 'store'])->name('user.score.store');
 Route::delete('user/score/{id}/destroy', [ScoresController::class, 'destroy'])->name('user.score.destroy');
