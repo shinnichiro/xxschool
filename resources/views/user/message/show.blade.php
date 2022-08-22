@@ -1,14 +1,15 @@
 @extends('layouts.user.app')
 
 @section('content')
-
 	<div class="row justify-content-center">
 		<div class="col-lg-8">
+			@include('layouts.error')
+
 			@if (\Auth::user()->id == $message->user_id)
 				{{ Form::open(['route' => ['user.message.store', 'id' => $message->id]]) }}
 					<div class="row">
 						<div class="col-lg-10">
-							{{ Form::text('content', $message->content, ['class' => 'form-control']) }}
+							{{ Form::text('content', $message->content, ['class' => 'form-control', 'required']) }}
 						</div>
 						<div class="col-lg-2 d-grid gap-2">
 							{{ Form::submit('編集', ['class' => 'btn btn-success']) }}
@@ -20,7 +21,7 @@
 					<div class="row">
 						<p>{{ $message->user->name }}さんより：{{ $message->content }}</p>
 						<div class="col-lg-10">
-							{{ Form::text('content', '', ['class' => 'form-control']) }}
+							{{ Form::text('content', '', ['class' => 'form-control', 'required']) }}
 						</div>
 						<div class="col-lg-2 d-grid gap-2">
 							{{ Form::submit('返信', ['class' => 'btn btn-success']) }}

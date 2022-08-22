@@ -1,9 +1,9 @@
 @extends('layouts.user.app')
 
 @section('content')
-
 	<div class="row justify-content-center">
 		<div class="col-lg-8">
+			@include('layouts.error')
 			<table class="table">
 				<tbody>
 					<tr>

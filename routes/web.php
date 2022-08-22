@@ -7,6 +7,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\ScoresController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::get('user/score/show', [ScoresController::class, 'show'])->name('user.sco
 Route::post('user/score/show', [ScoresController::class, 'show'])->name('user.score.show');
 Route::post('user/score/create', [ScoresController::class, 'create'])->name('user.score.create');
 Route::post('user/score/{id}/edit', [ScoresController::class, 'edit'])->name('user.score.edit');
+Route::get('user/score/{id}/edit', [ScoresController::class, 'edit'])->name('user.score.edit');
 Route::post('user/score/{id}/store', [ScoresController::class, 'store'])->name('user.score.store');
 Route::delete('user/score/{id}/destroy', [ScoresController::class, 'destroy'])->name('user.score.destroy');
 

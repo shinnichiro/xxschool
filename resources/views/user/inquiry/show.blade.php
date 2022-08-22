@@ -4,7 +4,7 @@
 
 	<div class="row justify-content-center">
 		<div class="col-sm-8">
-			<table class="table table-boardered table-striped">
+			<table class="table table-boardered table-striped  align-middle">
 				<thead>
 					<tr>
 						<th>お名前</th>

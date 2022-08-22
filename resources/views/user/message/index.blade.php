@@ -2,8 +2,11 @@
 
 @section('content')
 
+
 	<div class="row justify-content-center">
 		<div class="col-lg-8">
+			@include('layouts.error')
+
 			@foreach($messages as $message)
 				<div class="row align-middle mb-1">
 					<div class="col-lg-8">
@@ -32,7 +35,7 @@
 			{{ Form::open(['route' => 'user.message.create']) }}
 				<div class="row">
 					<div class="col-lg-10">
-						{{ Form::text('content', null, ['class' => 'form-control', 'placeholder' => 'メッセージ、お問い合わせなど']) }}
+						{{ Form::text('content', null, ['class' => 'form-control', 'placeholder' => 'メッセージ、お問い合わせなど', 'required']) }}
 					</div>
 					<div class="col-lg-2 d-grid gap-2">
 					{{ Form::submit('送信', ['class' => 'btn btn-success']) }}

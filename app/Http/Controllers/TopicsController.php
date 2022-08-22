@@ -36,6 +36,10 @@ class TopicsController extends Controller
             return redirect(route('user.index'));
         }
 
+        $this->validate($request, [
+            'content' => 'required|max:191',
+        ]);
+
         $topic = Topic::find($request->id);
         $topic->content = $request->content;
         $topic->save();
@@ -47,6 +51,10 @@ class TopicsController extends Controller
         if(\Auth::user()->auth != 'Admin') {
             return redirect(route('user.index'));
         }
+
+        $this->validate($request, [
+            'content' => 'required|max:191',
+        ]);
 
         $topic = new Topic();
         $topic->content = $request->content;

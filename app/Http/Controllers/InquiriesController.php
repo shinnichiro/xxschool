@@ -29,6 +29,12 @@ class InquiriesController extends Controller
     }
 
     public function create(Request $request) {
+        $this->validate($request, [
+            'name' => 'max:191|required',
+            'email' => 'max:191|required',
+            'content' => 'max:191|required',
+        ]);
+
         $inquiry = new Inquiry();
 
         $inquiry->name = $request->name;

@@ -35,7 +35,7 @@
 						</table>
 						{{ Form::open(['route' => 'user.topics.create']) }}
 							{{ Form::label('content', '新規作成：') }}
-							{{ Form::text('content', null, ['class' => 'form-control']) }}
+							{{ Form::text('content', null, ['class' => 'form-control', 'required']) }}
 							<div class="d-grid gap-2">
 								{{ Form::submit('作成', ['class' => 'btn btn-success']) }}
 							</div>

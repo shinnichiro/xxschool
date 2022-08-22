@@ -4,7 +4,12 @@
 
 <div class="row justify-content-center">
 	<div class="col-lg-8">
+		@include('layouts.error')
+
+		@if (count($errors) == 0)
 		<h3>{{ $user->name }}さんの成績</h3>
+		@endif
+
 		<table class="table align-middle">
 			<thead>
 				<tr>

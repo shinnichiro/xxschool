@@ -35,6 +35,10 @@ class MessagesController extends Controller
             return redirect(route('index'));
         }
 
+        $this->validate($request, [
+            'content' => 'required|max:191',
+        ]);
+
         $message = new Message();
         $message->user_id = \Auth::user()->id;
         $message->content = $request->content;
@@ -73,6 +77,10 @@ class MessagesController extends Controller
         if (!\Auth::check()) {
             return redirect(route('index'));
         }
+
+        $this->validate($request, [
+            'content' => 'required|max:191',
+        ]);
 
         $message = Message::find($request->id);
         $message->content = $request->content;
