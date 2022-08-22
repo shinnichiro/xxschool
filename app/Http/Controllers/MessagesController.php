@@ -7,7 +7,7 @@ use App\Models\Message;
 
 class MessagesController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         if (!\Auth::check()) {
             return redirect(route('index'));
         }
@@ -25,8 +25,15 @@ class MessagesController extends Controller
             })->get()->sortByDesc('id');
         }
 
+        if ($request->page == null) {
+            $page = 1;
+        } else {
+            $page = $request->page;
+        }
+
         return view('user.message.index', [
             'messages' => $messages,
+            'page' => $page,
         ]);
     }
 

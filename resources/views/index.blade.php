@@ -16,7 +16,7 @@
 					@endif
 				@endforeach
 			@endif
-			<li>{{ link_to_route('topics', '...more', []) }}</li>
+			<li>{{ link_to_route('topics', '...more', ['page' => 1]) }}</li>
 		</ul>
 	</div>
 	<div class="col-md-4 mb-4">

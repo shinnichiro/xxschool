@@ -7,15 +7,22 @@ use App\Models\Topic;
 
 class TopicsController extends Controller
 {
-    public function show() {
+    public function show(Request $request) {
         if(\Auth::user()->auth != 'Admin') {
             return redirect(route('user.index'));
         }
 
         $topics = Topic::all()->sortByDesc('id');
 
+        if ($request->page == null) {
+            $page = 1;
+        } else {
+            $page = $request->page;
+        }
+
         return view('user.topics.show', [
             'topics' => $topics,
+            'page' => $page,
         ]);
     }
 

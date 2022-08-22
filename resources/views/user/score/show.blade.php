@@ -22,8 +22,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach ($scores as $score)
+				@foreach ($scores as $key => $score)
 					<tr>
+						@if ($key >= count($scores) - 10 * $page && $key < count($scores) - 10 * ($page - 1))
 						<td>{{ substr($score->created_at, 0, 4) }}{{ substr($score->created_at, 5, 2) }}{{ substr($score->created_at, 8, 2) }}</td>
 						<td>{{ $score->subject }}</td>
 						<td>{{ $score->score }}</td>
@@ -37,10 +38,51 @@
 							{{ Form::close() }}
 						</td>
 						@endif
+						@endif
+						@if ($key == count($scores) - 10 * $page)
+							@break
+						@endif
 					</tr>
 				@endforeach
 			</tbody>
 		</table>
+		<nav aria-label="topicsPage">
+			<ul class="pagination">
+				@if ($page == 1)
+				<li class="page-item disabled">
+					<a class="page-link" href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				@else
+				<li class="page-item">
+					<a class="page-link" href="{{ route('user.score.show', ['page' => $page - 1, 'id' => $id]) }}" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				@endif
+				@for($i=1; $i<=count($scores)/10+1; $i++)
+					@if ($i == $page)
+					<li class="page-item active" aria-current="page"><a class="page-link" href="{{ route('user.score.show', ['page' => $i, 'id' => $id]) }}">{{$i}}</a></li>
+					@else
+					<li class="page-item"><a class="page-link" href="{{ route('user.score.show', ['page' => $i, 'id' => $id]) }}">{{$i}}</a></li>
+					@endif
+				@endfor
+				@if ($page == ((int)(count($scores) / 10)) + 1)
+				<li class="page-item disabled">
+					<a class="page-link" href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+				@else
+				<li class="page-item">
+					<a class="page-link" href="{{ route('user.score.show', ['page' => $page + 1, 'id' => $id]) }}" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+				@endif
+			</ul>
+		</nav>
 
 		@if (\Auth::user()->auth == 'User')
 		@else

@@ -18,9 +18,10 @@
 									<th>編集/削除</th>
 								</tr>
 							</thead>
-							@foreach($topics as $topic)
+							@foreach($topics as $key => $topic)
 								<tbody>
 									<tr>
+										@if ($key >= count($topics) - 10 * $page && $key < count($topics) - 10 * ($page - 1))
 										<td>{{ $topic->created_at }}</td>
 										<td>{{ $topic->content }}</td>
 										<td>
@@ -29,10 +30,51 @@
 												{{ Form::submit('削除する', ['class' => 'btn btn-danger']) }}
 											{{ Form::close() }}
 										</td>
+										@endif
+										@if ($key == count($topics) - 10 * $page)
+											@break
+										@endif
 									</tr>
 								</tbody>
 							@endforeach
 						</table>
+						<nav aria-label="topicsPage">
+							<ul class="pagination">
+								@if ($page == 1)
+								<li class="page-item disabled">
+									<a class="page-link" href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								@else
+								<li class="page-item">
+									<a class="page-link" href="{{ route('user.topics.show', ['page' => $page - 1]) }}" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								@endif
+								@for($i=1; $i<=count($topics)/10+1; $i++)
+									@if ($i == $page)
+									<li class="page-item active" aria-current="page"><a class="page-link" href="{{ route('user.topics.show', ['page' => $i]) }}">{{$i}}</a></li>
+									@else
+									<li class="page-item"><a class="page-link" href="{{ route('user.topics.show', ['page' => $i]) }}">{{$i}}</a></li>
+									@endif
+								@endfor
+								@if ($page == ((int)(count($topics) / 10)) + 1)
+								<li class="page-item disabled">
+									<a class="page-link" href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+								@else
+								<li class="page-item">
+									<a class="page-link" href="{{ route('user.topics.show', ['page' => $page + 1]) }}" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+								@endif
+							</ul>
+						</nav>
 						{{ Form::open(['route' => 'user.topics.create']) }}
 							{{ Form::label('content', '新規作成：') }}
 							{{ Form::text('content', null, ['class' => 'form-control', 'required']) }}

@@ -16,11 +16,12 @@ class InquiriesController extends Controller
         ]);
     }
 
-    public function topics() {
+    public function topics(Request $request) {
         $topics = Topic::all()->sortByDesc('id');
 
         return view('topics', [
             'topics' => $topics,
+            'page' => $request->page,
         ]);
     }
 
@@ -48,15 +49,22 @@ class InquiriesController extends Controller
         ]);
     }
 
-    public function show() {
+    public function show(Request $request) {
         if (\Auth::user()->auth != 'Admin') {
             return redirect(route('user.index'));
         }
 
         $inquiries = Inquiry::all()->sortby('closed');
 
+        if ($request->page == null) {
+            $page = 1;
+        } else {
+            $page = $request->page;
+        }
+
         return view('user.inquiry.show', [
             'inquiries' => $inquiries,
+            'page' => $page,
         ]);
     }
 

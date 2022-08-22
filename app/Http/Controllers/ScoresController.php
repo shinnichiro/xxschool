@@ -38,11 +38,17 @@ class ScoresController extends Controller
 
         $scores = Score::where('user_id', $request->id)->get()->sortByDesc('id');
         $user = User::find($request->id);
+        if ($request->page == null) {
+            $page = 1;
+        } else {
+            $page = $request->page;
+        }
 
         return view('user.score.show', [
             'scores' => $scores,
             'id' => $request->id,
             'user' => $user,
+            'page' => $page,
         ]);
     }
 
