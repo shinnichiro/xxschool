@@ -36,7 +36,12 @@
 	    					<li class="nav-item">{{ link_to_route('user.score.show', 'テスト得点閲覧', ['id' => Auth::user()->id], ['class' => 'nav-link']) }}</li>
 	    				@endif
     					<li class="nav-item">{{ link_to_route('user.message.index', 'メッセージを送る', [], ['class' => 'nav-link']) }}</li>
-		    			<li class="nav-item">{{ link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link']) }}</li>
+		    			<li class="nav-item">
+			    			<a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
+  							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					      		@csrf
+  							</form>
+  						</li>
 		    		</ul>
     			@else
     				{{ link_to_route('index', 'トップへ戻る', [], ['class' => 'navbar-brand ms-2']) }}

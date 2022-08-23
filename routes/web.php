@@ -25,7 +25,6 @@ Route::get('topics', [InquiriesController::class, 'topics'])->name('topics');
 Route::get('inquiry', [InquiriesController::class, 'index'])->name('inquiry.index');
 Route::post('inquiry', [InquiriesController::class, 'create'])->name('inquiry.create');
 Auth::routes();
-Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('user/index', [UsersController::class, 'index'])->name('user.index');
 Route::get('user/topics/show', [TopicsController::class, 'show'])->name('user.topics.show');
