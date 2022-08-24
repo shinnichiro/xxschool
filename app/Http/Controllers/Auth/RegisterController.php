@@ -24,6 +24,15 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    public function showRegistrationForm()
+    {
+        if (!\Auth::check() || \Auth::user()->auth != 'Admin') {
+            return redirect(route('index'));
+        } else {
+            return view('auth.register');
+        }
+    }
+
     /**
      * Where to redirect users after registration.
      *
@@ -51,7 +60,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'auth' => ['required', 'string', 'max:255'],
         ]);
