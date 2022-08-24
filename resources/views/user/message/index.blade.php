@@ -7,18 +7,29 @@
 		@include('layouts.error')
 
 		@foreach($messages as $key => $message)
-			<div class="row align-middle mb-1">
-				@if ($key >= count($messages) - 10 * $page && $key < count($messages) - 10 * ($page - 1))
+			@if ($key >= count($messages) - 10 * $page && $key < count($messages) - 10 * ($page - 1))
+			<div id="message" class="row align-middle align-items-center mb-1">
 				<div class="col-lg-8">
 					<p>
-						@if ($message->closed == false && \Auth::user()->auth != 'User')
-							<i class="fa-solid fa-circle-exclamation"></i>
-						@endif
-						{{ $message->user->name }}さんより：{{ $message->content }}
+						<div class="row">
+							<div class="col-4">
+								@if ($message->closed == false && \Auth::user()->auth != 'User')
+								<i class="fa-solid fa-circle-exclamation"></i>
+								@endif
+								{{ $message->user->name }}さん：
+							</div>
+							<div class="col-8">
+								{{ $message->content }}
+							</div>
+						</div>
 					</p>
 				</div>
-				<div class="col-lg-2 d-grid gap-2">
-					{{ link_to_route('user.message.show', '詳細', ['id' => $message->id], ['class' => 'btn btn-primary']) }}
+				<div class="col-lg-2">
+					{{ Form::open(['route' => ['user.message.show', 'id' => $message->id], 'method' => 'get']) }}
+						<div class="d-grid gap-2">
+							{{ Form::submit('詳細', ['class' => 'btn btn-primary']) }}
+						</div>
+					{{ Form::close() }}
 				</div>
 				@if (\Auth::user()->id == $message->user_id)
 				<div class="col-lg-2">
@@ -29,15 +40,15 @@
 					{{ Form::close() }}
 				</div>
 				@endif
-				@endif
-				@if ($key == count($messages) - 10 * $page)
-					@break
-				@endif
 			</div>
+			@endif
+			@if ($key == count($messages) - 10 * $page)
+				@break
+			@endif
 		@endforeach
 
 		<nav aria-label="messagesPage">
-			<ul class="pagination">
+			<ul class="pagination justify-content-center">
 				@if ($page == 1)
 				<li class="page-item disabled">
 					<a class="page-link" href="#" aria-label="Previous">

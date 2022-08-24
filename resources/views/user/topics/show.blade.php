@@ -3,7 +3,7 @@
 @section ('content')
 
 	<div class="row justify-content-center">
-		<div class="col-8">
+		<div class="col-lg-8">
 			@if (Auth::user()->auth == 'Admin')
 				<div class="card">
 					<div class="card-header">
@@ -39,7 +39,7 @@
 							@endforeach
 						</table>
 						<nav aria-label="topicsPage">
-							<ul class="pagination">
+							<ul class="pagination justify-content-center">
 								@if ($page == 1)
 								<li class="page-item disabled">
 									<a class="page-link" href="#" aria-label="Previous">

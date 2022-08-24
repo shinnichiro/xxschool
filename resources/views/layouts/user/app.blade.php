@@ -24,6 +24,10 @@
     		<nav class="navbar navbar-expand-lg mb-4">
     			@if (Auth::check())
 	    			<a href="{{ route('user.index') }}" class="navbar-brand ms-3">{{ Auth::user()->name }}さん</a>
+	    			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+	    				<span><i class="fa-solid fa-bars"></i></span>
+	    			</button>
+	    			<div class="collapse navbar-collapse" id="navbarNav">
 	    			<ul class="navbar-nav ms-auto">
 	    				@if (Auth::user()->auth == 'Admin')
 	    					<li class="nav-item">{{ link_to_route('register', 'ユーザー追加', [], ['class' => 'nav-link']) }}</li>
@@ -43,6 +47,7 @@
   							</form>
   						</li>
 		    		</ul>
+		    		</div>
     			@else
     				{{ link_to_route('index', 'トップへ戻る', [], ['class' => 'navbar-brand ms-2']) }}
     			@endif

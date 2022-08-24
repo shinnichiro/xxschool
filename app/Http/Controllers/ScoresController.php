@@ -28,7 +28,7 @@ class ScoresController extends Controller
             return redirect(route('index'));
         }
 
-        if (\Auth::user()->auth == 'User' && \Auth::id() != $request->user_id) {
+        if (\Auth::user()->auth == 'User' && \Auth::id() != $request->id) {
             return redirect(route('index'));
         }
 

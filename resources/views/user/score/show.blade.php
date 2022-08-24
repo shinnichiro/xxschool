@@ -47,7 +47,7 @@
 			</tbody>
 		</table>
 		<nav aria-label="topicsPage">
-			<ul class="pagination">
+			<ul class="pagination justify-content-center">
 				@if ($page == 1)
 				<li class="page-item disabled">
 					<a class="page-link" href="#" aria-label="Previous">
@@ -87,9 +87,14 @@
 		@if (\Auth::user()->auth == 'User')
 		@else
 			{{ Form::open(['route' => ['user.score.create', 'id' => $id]]) }}
-				{{ Form::select('subject', ['国語' => '国語', '数学' => '数学', '理科' => '理科', '社会' => '社会', '英語' => '英語', 'その他' => 'その他']) }}
-				{{ Form::label('score', '得点') }}
-				{{ Form::text('score', null, ['class' => 'form-control']) }}
+				<div class="row mb-1">
+					<div class="col-lg-2">{{ Form::label('subject', '教科：') }}</div>
+					<div class="col-lg-10">{{ Form::select('subject', ['国語' => '国語', '数学' => '数学', '理科' => '理科', '社会' => '社会', '英語' => '英語', 'その他' => 'その他']) }}</div>
+				</div>
+				<div class="row mb-1">
+					<div class="col-lg-2">{{ Form::label('score', '得点：') }}</div>
+					<div class="col-lg-10">{{ Form::text('score', null, ['class' => 'form-control']) }}</div>
+				</div>
 				<div class="d-grid gap-2">
 					{{ Form::submit('追加', ['class' => 'btn btn-success']) }}
 				</div>
