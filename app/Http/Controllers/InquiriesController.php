@@ -50,7 +50,7 @@ class InquiriesController extends Controller
     }
 
     public function show(Request $request) {
-        if (\Auth::user()->auth != 'Admin') {
+        if (!\Auth::check() || \Auth::user()->auth != 'Admin') {
             return redirect(route('user.index'));
         }
 
@@ -69,7 +69,7 @@ class InquiriesController extends Controller
     }
 
     public function store($id) {
-        if (\Auth::user()->auth != 'Admin') {
+        if (!\Auth::check() || \Auth::user()->auth != 'Admin') {
             return redirect(route('user.index'));
         }
 

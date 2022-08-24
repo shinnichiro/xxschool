@@ -8,7 +8,7 @@ use App\Models\Topic;
 class TopicsController extends Controller
 {
     public function show(Request $request) {
-        if(\Auth::user()->auth != 'Admin') {
+        if(!\Auth::check() || \Auth::user()->auth != 'Admin') {
             return redirect(route('user.index'));
         }
 
@@ -27,7 +27,7 @@ class TopicsController extends Controller
     }
 
     public function edit($id) {
-        if(\Auth::user()->auth != 'Admin') {
+        if(!\Auth::check() || \Auth::user()->auth != 'Admin') {
             return redirect(route('user.index'));
         }
 
@@ -39,7 +39,7 @@ class TopicsController extends Controller
     }
 
     public function store(Request $request) {
-        if(\Auth::user()->auth != 'Admin') {
+        if(!\Auth::check() || \Auth::user()->auth != 'Admin') {
             return redirect(route('user.index'));
         }
 
@@ -55,7 +55,7 @@ class TopicsController extends Controller
     }
 
     public function create(Request $request) {
-        if(\Auth::user()->auth != 'Admin') {
+        if(!\Auth::check() || \Auth::user()->auth != 'Admin') {
             return redirect(route('user.index'));
         }
 
@@ -71,7 +71,7 @@ class TopicsController extends Controller
     }
 
     public function destroy($id) {
-        if(\Auth::user()->auth != 'Admin') {
+        if(!\Auth::check() || \Auth::user()->auth != 'Admin') {
             return redirect(route('user.index'));
         }
 
