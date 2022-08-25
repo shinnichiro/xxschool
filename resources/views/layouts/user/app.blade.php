@@ -36,8 +36,10 @@
 	    					<li class="nav-item">{{ link_to_route('user.topics.show', 'トピックス編集', [], ['class' => 'nav-link']) }}</li>
 	    					<li class="nav-item">{{ link_to_route('user.inquiry.show', 'お問い合わせ閲覧', [], ['class' => 'nav-link']) }}</li>
 	    				@elseif (Auth::user()->auth == 'Teacher')
+	    					<li class="nav-item">{{ link_to_route('user.auth', 'ユーザー情報閲覧', [], ['class' => 'nav-link']) }}</li>
 	    					<li class="nav-item">{{ link_to_route('user.score.index', 'テスト得点入力', [], ['class' => 'nav-link']) }}</li>
 	    				@else
+	    					<li class="nav-item">{{ link_to_route('user.auth', 'ユーザー情報閲覧', [], ['class' => 'nav-link']) }}</li>
 	    					<li class="nav-item">{{ link_to_route('user.score.show', 'テスト得点閲覧', ['id' => Auth::user()->id], ['class' => 'nav-link']) }}</li>
 	    				@endif
     					<li class="nav-item">{{ link_to_route('user.message.index', 'メッセージを送る', [], ['class' => 'nav-link']) }}</li>

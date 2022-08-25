@@ -16,7 +16,7 @@ class UsersController extends Controller
     }
 
     public function auth() {
-        if (!\Auth::check() || \Auth::user()->auth != 'Admin') {
+        if (!\Auth::check()) {
             return view('user.index');
         }
 
@@ -43,15 +43,28 @@ class UsersController extends Controller
     }
 
     public function store(Request $request) {
-        if (!\Auth::check() || \Auth::user()->auth != 'Admin') {
+        if (!\Auth::check()) {
             return view('user.index');
         }
         if ($request->id == null) {
             return redirect(route('user.auth'));
         }
 
+        $this->validate($request, [
+            'email' => 'regex:/^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/',
+            'password' => 'max:191',
+        ]);
+
         $user = User::find($request->id);
-        $user->auth = $request->auth;
+        if ($request->auth != null && \Auth::user()->auth == 'Admin') {
+            $user->auth = $request->auth;
+        }
+        if ($request->email != null && \Auth::id() == $request->id) {
+            $user->email = $request->email;
+        }
+        if ($request->password != null && \Auth::id() == $request->id) {
+            $user->password = bcrypt($request->password);
+        }
         $user->save();
 
         return redirect(route('user.auth'));

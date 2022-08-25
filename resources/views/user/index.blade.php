@@ -32,10 +32,12 @@
 					@elseif (\Auth::user()->auth == 'Teacher')
 					<div class="row">
 						<div class="col-4">
+							<li>{{ link_to_route('user.auth', 'ユーザー情報閲覧') }}</li>
 							<li>{{ link_to_route('user.score.index', 'テスト得点入力') }}</li>
 							<li>{{ link_to_route('user.message.index', 'メッセージを送る') }}</li>
 						</div>
 						<div class="col-8">
+							<li>アカウント情報の閲覧、変更を行います。</li>
 							<li>テストの得点を登録、閲覧します。</li>
 							<li>掲示板へ移動します。</li>
 						</div>
@@ -43,10 +45,12 @@
 					@else
 					<div class="row">
 						<div class="col-4">
+							<li>{{ link_to_route('user.auth', 'ユーザー情報閲覧') }}</li>
 							<li>{{ link_to_route('user.score.show', 'テスト得点閲覧', ['id' => \Auth::id()]) }}</li>
 							<li>{{ link_to_route('user.message.index', 'メッセージを送る') }}</li>
 						</div>
 						<div class="col-8">
+							<li>アカウント情報の閲覧、変更を行います。</li>
 							<li>テストの得点を閲覧します。</li>
 							<li>掲示板へ移動します。</li>
 						</div>
