@@ -50,3 +50,10 @@ Route::post('user/message/create', [MessagesController::class, 'create'])->name(
 Route::get('user/message/{id}/show', [MessagesController::class, 'show'])->name('user.message.show');
 Route::post('user/message/{id}/store', [MessagesController::class, 'store'])->name('user.message.store');
 Route::delete('user/message/{id}/destroy', [MessagesController::class, 'destroy'])->name('user.message.destroy');
+
+Route::get('user/auth', [UsersController::class, 'auth'])->name('user.auth');
+Route::post('user/auth/show', [UsersController::class, 'show'])->name('user.auth.show');
+Route::get('user/auth/show', [UsersController::class, 'show'])->name('user.auth.show');
+Route::post('user/auth/store', [UsersController::class, 'store'])->name('user.auth.store');
+Route::get('user/auth/store', [UsersController::class, 'store'])->name('user.auth.store');
+Route::delete('user/auth/destroy', [UsersController::class, 'destroy'])->name('user.auth.destroy');

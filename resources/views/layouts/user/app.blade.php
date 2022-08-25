@@ -31,6 +31,7 @@
 	    			<ul class="navbar-nav ms-auto">
 	    				@if (Auth::user()->auth == 'Admin')
 	    					<li class="nav-item">{{ link_to_route('register', 'ユーザー追加', [], ['class' => 'nav-link']) }}</li>
+	    					<li class="nav-item">{{ link_to_route('user.auth', 'ユーザー情報閲覧', [], ['class' => 'nav-link']) }}</li>
 	    					<li class="nav-item">{{ link_to_route('user.score.index', 'テスト得点入力', [], ['class' => 'nav-link']) }}</li>
 	    					<li class="nav-item">{{ link_to_route('user.topics.show', 'トピックス編集', [], ['class' => 'nav-link']) }}</li>
 	    					<li class="nav-item">{{ link_to_route('user.inquiry.show', 'お問い合わせ閲覧', [], ['class' => 'nav-link']) }}</li>
