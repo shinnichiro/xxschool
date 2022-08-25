@@ -62,14 +62,14 @@
 					</a>
 				</li>
 				@endif
-				@for($i=1; $i<=count($messages)/10+1; $i++)
+				@for($i=1; $i<=(count($messages)-1)/10+1; $i++)
 					@if ($i == $page)
 					<li class="page-item active" aria-current="page"><a class="page-link" href="{{ route('user.message.index', ['page' => $i]) }}">{{$i}}</a></li>
 					@else
 					<li class="page-item"><a class="page-link" href="{{ route('user.message.index', ['page' => $i]) }}">{{$i}}</a></li>
 					@endif
 				@endfor
-				@if ($page == ((int)(count($messages) / 10)) + 1)
+				@if ($page == ((int)((count($messages) - 1) / 10)) + 1)
 				<li class="page-item disabled">
 					<a class="page-link" href="#" aria-label="Next">
 						<span aria-hidden="true">&raquo;</span>

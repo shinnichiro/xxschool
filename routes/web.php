@@ -54,6 +54,6 @@ Route::delete('user/message/{id}/destroy', [MessagesController::class, 'destroy'
 Route::get('user/auth', [UsersController::class, 'auth'])->name('user.auth');
 Route::post('user/auth/show', [UsersController::class, 'show'])->name('user.auth.show');
 Route::get('user/auth/show', [UsersController::class, 'show'])->name('user.auth.show');
-Route::post('user/auth/store', [UsersController::class, 'store'])->name('user.auth.store');
-Route::get('user/auth/store', [UsersController::class, 'store'])->name('user.auth.store');
-Route::delete('user/auth/destroy', [UsersController::class, 'destroy'])->name('user.auth.destroy');
+Route::post('user/auth/{id}/store', [UsersController::class, 'store'])->name('user.auth.store');
+Route::get('user/auth/{id}/store', [UsersController::class, 'store'])->name('user.auth.store');
+Route::delete('user/auth/{id}/destroy', [UsersController::class, 'destroy'])->name('user.auth.destroy');

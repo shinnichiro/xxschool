@@ -74,13 +74,13 @@ class UsersController extends Controller
         if (!\Auth::check() || \Auth::user()->auth != 'Admin') {
             return view('user.index');
         }
-        if ($request->id == null) {
+        if ($id == null) {
             return redirect(route('user.auth'));
         }
 
         $user = User::find($id);
         $user->delete();
 
-        return direct(route('user.auth'));
+        return redirect(route('user.auth'));
     }
 }

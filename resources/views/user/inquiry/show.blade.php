@@ -18,7 +18,7 @@
 				<div style="display: none;">{{ $i = 1 }}</div>
 				@foreach($inquiries as $key => $inquiry)
 					<tr>
-						@if ($i < $page * 10 && $i > ($page - 1) * 10)
+						@if ($i <= $page * 10 && $i > ($page - 1) * 10)
 						<td>{{ $inquiry->created_at }}</td>
 						<td>{{ $inquiry->name }}</td>
 						<td>{{ $inquiry->email }}</td>
@@ -57,14 +57,14 @@
 				</a>
 			</li>
 			@endif
-			@for($i=1; $i<=count($inquiries)/10+1; $i++)
+			@for($i=1; $i<=(count($inquiries)-1)/10+1; $i++)
 				@if ($i == $page)
 				<li class="page-item active" aria-current="page"><a class="page-link" href="{{ route('user.inquiry.show', ['page' => $i]) }}">{{$i}}</a></li>
 				@else
 				<li class="page-item"><a class="page-link" href="{{ route('user.inquiry.show', ['page' => $i]) }}">{{$i}}</a></li>
 				@endif
 			@endfor
-			@if ($page == ((int)(count($inquiries) / 10)) + 1)
+			@if ($page == ((int)((count($inquiries) - 1) / 10)) + 1)
 			<li class="page-item disabled">
 				<a class="page-link" href="#" aria-label="Next">
 					<span aria-hidden="true">&raquo;</span>

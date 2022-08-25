@@ -21,9 +21,14 @@
 				</tbody>
 			</table>
 			{{ Form::open(['route' => ['user.score.store', 'id' => $score->id]]) }}
-				{{ Form::select('subject', ['国語' => '国語', '数学' => '数学', '理科' => '理科', '社会' => '社会', '英語' => '英語', 'その他' => 'その他']) }}
-				{{ Form::label('score', '得点') }}
-				{{ Form::text('score', null, ['class' => 'form-control']) }}
+				<div class="row mb-1">
+					<div class="col-lg-2">{{ Form::label('subject', '教科：') }}</div>
+					<div class="col-lg-10">{{ Form::select('subject', ['国語' => '国語', '数学' => '数学', '理科' => '理科', '社会' => '社会', '英語' => '英語', 'その他' => 'その他']) }}</div>
+				</div>
+				<div class="row mb-1">
+					<div class="col-lg-2">{{ Form::label('score', '得点：') }}</div>
+					<div class="col-lg-10">{{ Form::text('score', null, ['class' => 'form-control']) }}</div>
+				</div>
 				<div class="d-grid gap-2">
 					{{ Form::submit('編集', ['class' => 'btn btn-success']) }}
 				</div>

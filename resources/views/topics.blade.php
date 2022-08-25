@@ -34,14 +34,14 @@
 					</a>
 				</li>
 				@endif
-				@for($i=1; $i<=count($topics)/10+1; $i++)
+				@for($i=1; $i<=(count($topics)-1)/10+1; $i++)
 					@if ($i == $page)
 					<li class="page-item active" aria-current="page"><a class="page-link" href="{{ route('topics', ['page' => $i]) }}">{{$i}}</a></li>
 					@else
 					<li class="page-item"><a class="page-link" href="{{ route('topics', ['page' => $i]) }}">{{$i}}</a></li>
 					@endif
 				@endfor
-				@if ($page == ((int)(count($topics) / 10)) + 1)
+				@if ($page == ((int)((count($topics) - 1) / 10)) + 1)
 				<li class="page-item disabled">
 					<a class="page-link" href="#" aria-label="Next">
 						<span aria-hidden="true">&raquo;</span>

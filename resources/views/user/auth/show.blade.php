@@ -15,9 +15,23 @@
 				</tr>
 				<tr>
 					<td>メールアドレス</td>
+					@if (\Auth::id() == $user->id)
+					<td>
+						{{ Form::open(['route' => ['user.auth.store', 'id' => \Auth::id()]]) }}
+							<input type="email" class="form-control" name="email" value="{{ \Auth::user()->email }}" required>
+					</td>
+					<td>
+							<div class="d-grid gap-2">
+								{{ Form::submit('変更', ['class' => 'btn btn-primary']) }}
+							</div>
+						{{ Form::close() }}
+					</td>
+					<td></td>
+					@else
 					<td>{{ $user->email }}</td>
 					<td></td>
 					<td></td>
+					@endif
 				</tr>
 				<tr>
 					<td>権限</td>
