@@ -26,11 +26,13 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
+        /*
         if (!\Auth::check() || \Auth::user()->auth != 'Admin') {
             return redirect(route('index'));
         } else {
             return view('auth.register');
         }
+        */
 
 
         //最初の1人を登録する用
