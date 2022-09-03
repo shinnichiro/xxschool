@@ -1,3 +1,11 @@
+<h2 align="center">XX塾ホームページ</h2>
+
+<h4>1.作成目的</h4>
+<p>塾講師時代、手書きで保護者様とやりとりしていて不便だったのを思い出し、今なら直接連絡が取れるサービスを作れると考えた。</p>
+
+<h4>2.使用可能なサービス</h4>
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
