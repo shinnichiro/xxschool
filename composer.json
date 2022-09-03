@@ -27,7 +27,13 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "exclude-from-classmap": [
+            "vendor\\laravel\\ui\\auth-backend\\RegistersUsers.php"
+        ],
+        "files":[
+            "app\\vendor\\laravel\\ui\\auth-backend\\RegistersUsers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
