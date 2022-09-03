@@ -30,10 +30,10 @@
 
 <h4>3.サイトマップ・ER図</h4>
 <p>サイトマップ<p>
-<img src="{{ asset('images/siteMap.png') }}">
+<img src="https://github.com/shinnichiro/xxschool/blob/main/public/images/siteMap.png">
 
 <p>ER図</p>
-<img src="{{ asset('images/ER.png') }}">
+<img src="https://github.com/shinnichiro/xxschool/blob/main/public/images/ER.png">
 
 <h4>4.バージョンアップ（スキルアップ）のためのポイント</h4>
 <p>a.権限を guard を用いて表現する</p>
@@ -42,4 +42,3 @@
 <p>b.見た目の問題</p>
 <p>CSSを少々学習したが、ほぼbootstrapに頼ってしまった。</p>
 <p>自分が弱い分野だと思うので、学習の余地は多い</p>
-</ul>
