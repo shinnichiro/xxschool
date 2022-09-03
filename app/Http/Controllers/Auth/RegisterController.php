@@ -32,10 +32,10 @@ class RegisterController extends Controller
             return view('auth.register');
         }
 
-        /*
+
         //最初の1人を登録する用
         return view('auth.register');
-        */
+
     }
 
     /**
