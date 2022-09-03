@@ -4,6 +4,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        	<div class="alert alert-success">
+        		<p><i class="fa-solid fa-circle-exclamation"></i>初期設定として、以下の3人を登録しております：</p>
+        		<p>Admin権限を持つユーザー Admin0000 / パスワード AdminPass</p>
+        		<p>Teacher権限を持つユーザー Teacher0000 / パスワード TeacherPass</p>
+        		<p>User権限を持つユーザー User0000 / パスワード UserPass</p>
+        		<p>ユーザーの登録はAdmin権限を持つ者のみが可能です。</p>
+        	</div>
+
             <div class="card">
                 <div class="card-header">{{ __('ログイン') }}</div>
 
@@ -66,7 +74,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+           	</div>
         </div>
     </div>
 </div>

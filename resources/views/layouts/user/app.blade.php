@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="{{ asset('/css/user.css') }}">
         <script src="js/"></script>
 
-        <title>タイトルを入れよう！</title>
+        <title>XX塾 ユーザーページ</title>
     </head>
     <body>
     	<div class="container-fluid">

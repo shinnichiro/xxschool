@@ -20,7 +20,7 @@
 			@endif
 		</ul>
 		<nav aria-label="topicsPage">
-			<ul class="pagination">
+			<ul class="pagination justify-content-center">
 				@if ($page == 1)
 				<li class="page-item disabled">
 					<a class="page-link" href="#" aria-label="Previous">
